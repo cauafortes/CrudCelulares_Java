@@ -47,13 +47,22 @@ public class MySQLCelularDAO implements CelularDAO {
 	}
 
 	@Override
-	public boolean delete(Celular celular) throws ModelException {
-		DBHandler db = new DBHandler();
-		String sqlDelete = "DELETE FROM Celulares WHERE idCelular = ?;";
-		db.prepareStatement(sqlDelete);
-		db.setInt(1, celular.getId());
-		return db.executeUpdate() > 0;
-	}
+    public boolean delete(Celular celular) throws ModelException {
+        DBHandler db = new DBHandler();
+        String sqlDelete = "DELETE FROM Celulares WHERE idCelular = ?;";
+
+        try {
+            db.prepareStatement(sqlDelete);
+            db.setInt(1, celular.getId());
+            boolean deleted = db.executeUpdate() > 0; 
+            System.out.println("MySQLCelularDAO.delete: Execução da query DELETE retornou " + deleted); // Log de depuração
+            return deleted; 
+        } catch (ModelException e) {
+            System.err.println("MySQLCelularDAO.delete: Erro ao deletar celular com ID " + celular.getId() + ": " + e.getMessage()); // Log de erro
+            e.printStackTrace(); 
+            throw e; 
+        }
+    }
 
 	@Override
 	public List<Celular> listAll() throws ModelException {
