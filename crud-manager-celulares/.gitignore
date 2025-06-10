@@ -1,0 +1,37 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Eclipse
+.classpath
+.project
+.settings/
+*.launch
+*.history
+
+# Logs
+*.log
+logs/
+
+# Tomcat installation (se estiver na mesma pasta raiz do WorkSpaceTDI)
+/apache-tomcat-*/
+
+# Outros projetos que não fazem parte deste repositório
+/facebook/
+/projeto-java-facebook/
+/servlets_metodos/
+/web-controle-financeiro-final/
+
+# Dependências do Maven baixadas pelo IDE, se necessário (geralmente não precisa, pois o Maven cuida delas)
+# .m2/
+
+# WAR files
+*.war
+*.war.original
+
+# Database backups
+*.sql.bak
+*.bak
